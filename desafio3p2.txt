@@ -1,0 +1,20 @@
+
+	// Validacion de solo una parte si contiene esa cadena
+	I.assertContain(response?.data?.results?.[0]?.name, 'Rick')
+
+	// Validacion negativa de solo una parte si contiene esa cadena
+	I.assertNotContain(response?.data?.results?.[0]?.name, 'Javier')
+
+	// Validar todo el JSON
+	I.assertJsonSchema(response?.data, mockForJSON)
+
+	// Validar tipo de Dato
+	I.assertToBeA(response?.data?.results?.[0]?.name, 'string')
+	I.assertToBeA(response?.data?.results?.[0]?.id, 'number')
+})
+
+// Scenario('Test of backend REST PUT', async ({ I }) => {
+// 	const response = await I.sendPutRequest('https://reqres.in/api/users/2', {
+// 		name: 'javier',
+// 		job: 'zion resident',
+// 	})

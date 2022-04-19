@@ -1,0 +1,20 @@
+import {
+	mockDataForRicky,
+	mockForJSON,
+	mockForPutRequest,
+} from './mocksForBackend'
+
+Feature('Pruebas de backend APIs REST y GRAPHQL con assertions')
+
+Scenario('Test of backend REST GET', async ({ I }) => {
+	const response = await I.sendGetRequest(
+		'https://rickandmortyapi.com/api/character/'
+	)
+
+	// Validamos el codigo de respuesta correcto
+	I.assertEqual(response?.status, 200)
+
+	// Validacion sobre la data por individual
+	I.assertEqual(response?.data?.results?.[0]?.status, 'Alive')
+	I.assertEqual(response?.data?.results?.[0]?.species, 'Human')
+
